@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block body %}
+   
+      <nav>
+        <ul>
+          <li><a href="#" class="active" >Home</a></li>
+          <li><a href="{{url_for('login')}}">Login</a></li>
+        </ul> 
+      </nav>
+    
+    
+    <h1 style="margin: 30 0 30 0; text-align: center;">Home page</h1>
+    <img style="display:block; margin:auto;width: 75%;height: 75%;" src="../static/portada.jpg">
+{% endblock %}

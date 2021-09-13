@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block body %}
+      <nav>
+        <ul>
+          <li><a href="{{url_for('home')}}">Home</a></li>
+          <li><a href="#" class="active">Login</a></li>
+        </ul>
+      </nav>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages%}
+      {% if request.args.get('alertType') == "1" %}
+      <div class="alert alert-danger alert-dismissible fade show alert-custom" role="alert">
+      {% elif request.args.get('alertType') == "2" %}
+      <div class="alert alert-warning alert-dismissible fade show alert-custom" role="alert">
+      {% endif%}
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      <p>{{test}}</p>
+      {% endwith %}
+      <div class="login-box">
+        <h2>Login</h2>
+        <form action="{{url_for('checklogin')}}" method="post">
+          <div class="user-box">
+            <input type="text" name="user">
+            <label>Username</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="pass">
+            <label>Password</label>
+          </div>
+            <button type="submit">Submit</button>
+        </form>
+      </div>
+{% endblock %}
